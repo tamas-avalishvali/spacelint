@@ -2,7 +2,7 @@
   "name": "whitespace-ninja",
   "displayName": "Whitespace Ninja",
   "description": "Highlights unintended double spaces in real time and helps you keep your code clean and consistent.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "QuickTools",
   "engines": {
     "vscode": "^1.109.0"
