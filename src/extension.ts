@@ -18,22 +18,21 @@ export function activate(context: vscode.ExtensionContext) {
             const startPos = editor.document.positionAt(match.index);
             const endPos = editor.document.positionAt(match.index + match[0].length);
 
-            ranges.push({
-                range: new vscode.Range(startPos, endPos)
-            });
+            ranges.push({ range: new vscode.Range(startPos, endPos) });
         }
 
-        editor.setDecorations(decorationType!, ranges);
+        if (decorationType) {
+            editor.setDecorations(decorationType, ranges);
+        }
     }
 
     function createDecoration() {
-        // Dispose old decoration to prevent memory leak
         if (decorationType) {
             decorationType.dispose();
         }
 
         const config = vscode.workspace.getConfiguration('doubleSpaceHighlighter');
-        const color = config.get<string>('highlightColor', 'rgba(255,0,0,0.3)');
+        const color = config.get<string>('highlightColor', 'rgba(234,0,255,0.3)');
 
         decorationType = vscode.window.createTextEditorDecorationType({
             backgroundColor: color,
