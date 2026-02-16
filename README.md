@@ -20,8 +20,6 @@ Double spaces can make your code messy and hard to read. Whitespace Ninja highli
 
 ## Screenshot
 
-![Screenshot](images/screenshot.png)
-
 ## Installation
 
 1. Open VSCode
