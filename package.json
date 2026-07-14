@@ -1,9 +1,11 @@
 {
   "name": "whitespace-ninja",
   "displayName": "Whitespace Ninja",
-  "description": "Highlights unintended double spaces in real time and helps you keep your code clean and consistent.",
-  "version": "0.0.7",
+  "description": "Real-time detection and one-click cleanup of double spaces, trailing whitespace, mixed tabs/spaces, extra blank lines, and invisible unicode whitespace.",
+  "version": "0.2.0",
   "publisher": "QuickTools",
+  "license": "MIT",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.109.0"
   },
@@ -11,7 +13,29 @@
     "type": "git",
     "url": "https://github.com/tamas-avalishvali/spacelint.git"
   },
-  "categories": ["Other"],
+  "bugs": {
+    "url": "https://github.com/tamas-avalishvali/spacelint/issues"
+  },
+  "homepage": "https://github.com/tamas-avalishvali/spacelint#readme",
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
+  "keywords": [
+    "whitespace",
+    "trailing whitespace",
+    "double space",
+    "linter",
+    "formatter",
+    "tabs vs spaces",
+    "mixed indentation",
+    "invisible characters",
+    "unicode whitespace",
+    "clean code",
+    "code quality",
+    "non-breaking space"
+  ],
+  "categories": ["Linters", "Formatters", "Other"],
   "activationEvents": [
     "*"
   ],
@@ -19,17 +43,84 @@
   "contributes": {
     "commands": [
       {
-        "command": "doubleSpaceHighlighter.start",
-        "title": "Start Double Space Highlighter"
+        "command": "whitespaceNinja.cleanFile",
+        "title": "Whitespace Ninja: Clean Current File"
+      },
+      {
+        "command": "whitespaceNinja.cleanWorkspace",
+        "title": "Whitespace Ninja: Clean All Open Files"
       }
     ],
     "configuration": {
-      "title": "Double Space Highlighter",
+      "title": "Whitespace Ninja",
       "properties": {
+        "whitespaceNinja.rules.multipleSpaces": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight runs of 2+ spaces in the middle of a line (indentation is never flagged)."
+        },
+        "whitespaceNinja.rules.trailingWhitespace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight spaces/tabs at the end of a line."
+        },
+        "whitespaceNinja.rules.mixedIndentation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight lines whose leading indentation mixes tabs and spaces."
+        },
+        "whitespaceNinja.rules.extraBlankLines": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight consecutive blank lines beyond the configured maximum."
+        },
+        "whitespaceNinja.rules.invisibleWhitespace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight non-breaking spaces and other invisible unicode whitespace characters."
+        },
+        "whitespaceNinja.maxBlankLines": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "description": "Maximum number of consecutive blank lines allowed before they are flagged."
+        },
+        "whitespaceNinja.maxFileSizeKB": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 0,
+          "description": "Skip scanning files larger than this size (in KB) to keep typing responsive."
+        },
+        "whitespaceNinja.colors.multipleSpaces": {
+          "type": "string",
+          "default": "rgba(234,0,255,0.3)",
+          "description": "Highlight color for multiple-space issues."
+        },
+        "whitespaceNinja.colors.trailingWhitespace": {
+          "type": "string",
+          "default": "rgba(255,0,0,0.25)",
+          "description": "Highlight color for trailing-whitespace issues."
+        },
+        "whitespaceNinja.colors.mixedIndentation": {
+          "type": "string",
+          "default": "rgba(255,165,0,0.3)",
+          "description": "Highlight color for mixed-indentation issues."
+        },
+        "whitespaceNinja.colors.extraBlankLines": {
+          "type": "string",
+          "default": "rgba(100,120,255,0.15)",
+          "description": "Highlight color for extra-blank-line issues."
+        },
+        "whitespaceNinja.colors.invisibleWhitespace": {
+          "type": "string",
+          "default": "rgba(255,215,0,0.35)",
+          "description": "Highlight color for invisible/unicode whitespace issues."
+        },
         "doubleSpaceHighlighter.highlightColor": {
           "type": "string",
           "default": "rgba(234,0,255,0.3)",
-          "description": "Background color for double space highlight"
+          "description": "Deprecated - use whitespaceNinja.colors.multipleSpaces instead.",
+          "deprecationMessage": "Renamed to whitespaceNinja.colors.multipleSpaces. Your existing value has been migrated automatically."
         }
       }
     }
