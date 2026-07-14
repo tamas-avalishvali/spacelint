@@ -1,7 +1,7 @@
 {
   "name": "whitespace-ninja",
   "displayName": "Whitespace Ninja",
-  "description": "Real-time detection and one-click cleanup of double spaces, trailing whitespace, mixed tabs/spaces, extra blank lines, and invisible unicode whitespace.",
+  "description": "Real-time whitespace linter & formatter: flags trailing whitespace, double spaces, mixed tabs/spaces, extra blank lines, and invisible unicode whitespace, with one-click Quick Fix cleanup.",
   "version": "0.2.0",
   "publisher": "QuickTools",
   "license": "MIT",
@@ -24,18 +24,19 @@
   "keywords": [
     "whitespace",
     "trailing whitespace",
-    "double space",
     "linter",
     "formatter",
-    "tabs vs spaces",
+    "double space",
     "mixed indentation",
+    "blank lines",
     "invisible characters",
     "unicode whitespace",
-    "clean code",
-    "code quality",
     "non-breaking space"
   ],
-  "categories": ["Linters", "Formatters", "Other"],
+  "categories": [
+    "Linters",
+    "Formatters"
+  ],
   "activationEvents": [
     "*"
   ],
